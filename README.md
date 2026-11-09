@@ -39,8 +39,23 @@ Update later with `npx skills update -g`.
 |---|---|
 | [saisse-good-taste](skills/saisse-good-taste/SKILL.md) | My design taste and review process for any product surface: web, mobile, Shopify apps, dashboards, landing pages. Copy the platform's native patterns, cut text to icons, titles and buttons, make the first screen the hero, polish states and motion, treat performance as design, then review the result live like a picky senior designer. |
 | [saisse-no-fluff](skills/saisse-no-fluff/SKILL.md) | How I want agents to talk to me. Replies lead with the next action, number the steps, say where you are in the task and give real time estimates. Filler gets cut, and so do AI writing tells like em dashes and hype words. |
+| [saisse-motion](skills/saisse-motion/SKILL.md) | My motion design and video studio for coding agents: product demos, launch films, ads with end cards, UGC-style ads with lip sync, 2.5D story shorts, model reels, hero loops, decks with motion and footage edits. Picks the stack (Remotion + GSAP, HyperFrames, Blender MCP, ffmpeg-skill, earshot, ElevenLabs), puts script and audio first, storyboards in frames, keeps every motion value in one config so feedback becomes a number, times sound to the frame and reviews with contact sheets before anything ships. |
 
 More coming.
+
+## saisse-motion setup
+
+The skill works with plain FFmpeg and Node. It gets better with the tools it routes to:
+
+```bash
+brew install ffmpeg                                  # or your OS package manager
+npx skills add remotion-dev/skills                   # Remotion guidance for the agent
+npx skills add elevenlabs/skills                     # voice, music, SFX (needs ELEVENLABS_API_KEY)
+uv tool install "earshot[mcp] @ git+https://github.com/Leonxlnx/earshot" && earshot doctor --fetch   # ears + SFX bank
+npx ffmpeg-skill                                     # footage editing tools
+```
+
+Call it with `/saisse-motion` and describe the piece ("a 5 s vertical demo of my app, fast, enthusiastic British voice, a jingle"). It asks for what is missing, sends a plan, then builds, reviews and renders to `~/Downloads`. Every repo it mentions, with install commands and licence notes, is in [references/toolkit.md](skills/saisse-motion/references/toolkit.md).
 
 ## Keep saisse-no-fluff always on
 
@@ -78,6 +93,8 @@ skills/
 - [humanizer](https://github.com/blader/humanizer) by Siqi Chen: the voice rules and `references/ai-tells.md`, based on Wikipedia's [Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)
 
 Their copyright notices are in [skills/saisse-no-fluff/LICENSE.txt](skills/saisse-no-fluff/LICENSE.txt).
+
+`saisse-motion` is built on public work by [Dumble](https://x.com/Y0urDumble), [beamnxw](https://x.com/beamnxw), [Leon Lin](https://x.com/LexnLin) (earshot) and [CuteGuy](https://x.com/cutetoxicguy), plus the open-source repos it links. Ideas are rewritten in my own words with links to each original post in [references/sources.md](skills/saisse-motion/references/sources.md).
 
 ## License
 
